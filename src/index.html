@@ -5,11 +5,43 @@
     <!-- PON UN FAVICON!!! -->
     <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CAMBIA EL TITLE!!! -->
-    <title>Vite Template</title>
+    <title>Countries</title>
   </head>
   <body>
-    <img src="assets/images/anubis.jpg" width="500px" alt="anubis" />
+    <header class="header">
+      <h1>Where in the world?</h1>
+      <div class="mode" id="mode"><img class="mode__icon" src="assets/images/moon-regular.svg" />Dark Mode</div>
+    </header>
+
+    <form class="form" id="form" action="">
+      <div class="search-bar__container">
+        <label for="search-bar"><img class="search-bar__icon" src="assets/images/magnifying-glass-solid.svg" /></label>
+        <input class="search-bar__input" id="search-bar" type="text" placeholder="Search for a country..." />
+      </div>
+      <select class="form__filter" id="filter">
+        <option value="0">Filter by Region</option>
+        <option value="1">Africa</option>
+        <option value="2">America</option>
+        <option value="3">Asia</option>
+        <option value="4">Europe</option>
+        <option value="5">Oceania</option>
+      </select>
+    </form>
+
+    <main>
+      <div class="countries-grid" id="countries-grid">
+        <div class="country">
+          <div class="country__flag"></div>
+          <div class="country__text">
+            <h2 class="country__title">Germany</h2>
+            <p class="country__key">Population: <span class="country__value">81,770,900</span></p>
+            <p class="country__key">Region: <span class="country__value">Europe</span></p>
+            <p class="country__key">Capital: <span class="country__value">Berlin</span></p>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script type="module" src="./js/index.js"></script>
   </body>
 </html>

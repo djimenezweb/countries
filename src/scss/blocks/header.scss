@@ -1,1 +1,17 @@
+.header {
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
+}
 
+.mode {
+  display: flex;
+  gap: 1rem;
+}
+
+.mode__icon {
+  width: 1rem;
+}

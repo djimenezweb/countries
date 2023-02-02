@@ -1,0 +1,29 @@
+.form {
+  width: 90%;
+  margin: 0 auto 2rem;
+}
+
+.search-bar__container {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 2rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+.search-bar__icon {
+  width: 1.5rem;
+}
+
+.search-bar__input {
+  border: 0;
+  flex-grow: 1;
+}
+
+.form__filter {
+  width: 300px;
+  padding: 1rem 2rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+  border: 0;
+}

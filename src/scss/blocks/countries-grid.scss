@@ -1,0 +1,26 @@
+.countries-grid {
+  display: grid;
+}
+
+.country {
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+
+  &__text {
+    padding: 2rem 2rem 3rem;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+  }
+
+  &__key {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  &__value {
+    font-weight: 400;
+  }
+}
