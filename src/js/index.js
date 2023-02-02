@@ -15,20 +15,33 @@ const printData = data => {
   const fragment = document.createDocumentFragment();
   data.forEach(item => {
     const countryDiv = createElementFunction('div', 'country');
-    const countryTitle = createElementFunction('h2', 'country__title', item.name.common);
     const countryFlag = createElementFunction('img', 'country__flag', item.flags.png);
-    const countryPop = createElementFunction('p', 'country__key', item.population);
+    const countryText = createElementFunction('div', 'country__text');
+    const countryTitle = createElementFunction('h2', 'country__title', item.name.common);
+    const countryPopulationKey = createElementFunction('p', 'country__key', 'Population: ');
+    const countryPopulation = createElementFunction('span', 'country__value', item.population.toLocaleString('en-US'));
+    const countryRegionKey = createElementFunction('p', 'country__key', 'Region: ');
+    const countryRegion = createElementFunction('span', 'country__value', item.region);
+    const countryCapitalKey = createElementFunction('p', 'country__key', 'Capital: ');
     let countryCapital;
     if (item.capital) {
-      countryCapital = createElementFunction('p', 'country__key', item.capital[0]);
+      countryCapital = createElementFunction('span', 'country__value', item.capital[0]);
     } else {
-      countryCapital = createElementFunction('p', 'country__key', 'N/A');
+      countryCapital = createElementFunction('span', 'country__value', 'N/A');
     }
 
+    countryPopulationKey.append(countryPopulation);
+    countryRegionKey.append(countryRegion);
+    countryCapitalKey.append(countryCapital);
+
+    countryText.append(countryTitle);
+    countryText.append(countryPopulationKey);
+    countryText.append(countryRegionKey);
+    countryText.append(countryCapitalKey);
+
     countryDiv.append(countryFlag);
-    countryDiv.append(countryTitle);
-    countryDiv.append(countryPop);
-    countryDiv.append(countryCapital);
+    countryDiv.append(countryText);
+
     fragment.append(countryDiv);
   });
   countriesGridElement.append(fragment);
