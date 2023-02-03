@@ -1,14 +1,23 @@
 .header {
   background-color: var(--background);
-  padding: 2rem 1rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 100;
+}
+
+.header__container {
+  width: 90%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 2rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
-  margin-bottom: 2rem;
 }
 
 .mode {
+  cursor: pointer;
   display: flex;
   gap: 1rem;
 }

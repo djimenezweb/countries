@@ -1,7 +1,16 @@
-// El styles lo importamos aquí, ya se carga después al compilar todo
 import '../scss/styles.scss';
 
+// CONSTANTES
+
 const countriesGridElement = document.getElementById('countries-grid');
+const toggleMode = document.getElementById('mode');
+const filterElement = document.getElementById('filter');
+const formElement = document.getElementById('form');
+const searchBarElement = document.getElementById('search-bar');
+
+let allCountries;
+
+// FUNCIONES
 
 const createElementFunction = (element, className, content) => {
   const newElement = document.createElement(element);
@@ -12,6 +21,7 @@ const createElementFunction = (element, className, content) => {
 };
 
 const printData = data => {
+  countriesGridElement.innerHTML = '';
   const fragment = document.createDocumentFragment();
   data.forEach(item => {
     const countryDiv = createElementFunction('div', 'country');
@@ -45,37 +55,49 @@ const printData = data => {
     fragment.append(countryDiv);
   });
   countriesGridElement.append(fragment);
-
-  console.log(data);
-  console.log(data[40].name.common);
-  console.log(data[40].capital[0]);
-  console.log(data[40].population);
-  console.log(data[40].flags.png);
 };
-
-{
-  /*
-  <div class="country">
-    <div class="country__flag"></div>
-    <div class="country__text">
-        <h2 class="country__title">Germany</h2>
-        <p class="country__key">Population: <span class="country__value">81,770,900</span></p>
-        <p class="country__key">Region: <span class="country__value">Europe</span></p>
-        <p class="country__key">Capital: <span class="country__value">Berlin</span></p>
-    </div>
-</div>
-
-*/
-}
 
 const fetchData = url => {
   const request = fetch(url);
   request
     .then(response => response.json())
-    .then(data => printData(data))
+    .then(data => {
+      printData(data);
+      allCountries = data;
+    })
     .catch(err => {
       console.log(err);
     });
 };
 
+const filterByCountry = selectedCountry => {
+  const filteredCountry = allCountries.filter(item => item.name.common.toLowerCase().startsWith(selectedCountry.toLowerCase()));
+  //const filteredCountry = allCountries.filter(item => item.name.common.toLowerCase() === selectedCountry.toLowerCase());
+  printData(filteredCountry);
+};
+
+const filterByRegion = selectedRegion => {
+  const filteredCountries = allCountries.filter(item => item.region === selectedRegion);
+  printData(filteredCountries);
+};
+
+// ACCIONES
+
 fetchData('https://restcountries.com/v3.1/all');
+
+// EVENTOS
+
+formElement.addEventListener('submit', ev => {
+  ev.preventDefault();
+  searchBarElement.value === '' ? printData(allCountries) : filterByCountry(searchBarElement.value);
+});
+
+filterElement.addEventListener('change', ev => {
+  ev.target.value === '0' ? printData(allCountries) : filterByRegion(ev.target.value);
+  //ev.target.value !== '0' && filterByRegion(ev.target.value);
+});
+
+toggleMode.addEventListener('click', () => {
+  const bodyClass = document.body.classList;
+  bodyClass.contains('darkmode') ? bodyClass.remove('darkmode') : bodyClass.add('darkmode');
+});
