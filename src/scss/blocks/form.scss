@@ -4,6 +4,7 @@
 }
 
 .search-bar__container {
+  background-color: var(--background);
   width: 100%;
   margin-bottom: 2rem;
   padding: 1rem 2rem;
@@ -17,11 +18,15 @@
 }
 
 .search-bar__input {
+  background-color: var(--background);
+  color: var(--foreground);
   border: 0;
   flex-grow: 1;
 }
 
 .form__filter {
+  background-color: var(--background);
+  color: var(--foreground);
   width: 300px;
   padding: 1rem 2rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);

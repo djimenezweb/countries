@@ -1,5 +1,11 @@
 :root {
-  /* Variables CSS */
+  --background: #fff;
+  --foreground: #000;
+  --body-background: #fafafa;
 }
 
-/* Variables SASS */
+.darkmode {
+  --background: #2b3743;
+  --foreground: #fff;
+  --body-background: #202d36;
+}
