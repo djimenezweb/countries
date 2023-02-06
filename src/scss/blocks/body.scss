@@ -6,4 +6,9 @@ body {
   background-color: var(--body-background);
   color: var(--foreground);
   font-family: sans-serif;
+  overflow: auto;
+}
+
+.hidden-overflow {
+  overflow: hidden;
 }

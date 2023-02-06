@@ -7,10 +7,23 @@ const toggleMode = document.getElementById('mode');
 const filterElement = document.getElementById('filter');
 const formElement = document.getElementById('form');
 const searchBarElement = document.getElementById('search-bar');
+const modalElement = document.getElementById('modal');
+const modalButton = document.getElementById('modal__button');
+const modalCountryElement = document.getElementById('modal__country');
 
 let allCountries;
 
 // FUNCIONES
+
+const openModal = () => {
+  modalElement.classList.add('modal--show');
+  document.body.classList.add('hidden-overflow');
+};
+
+const closeModal = () => {
+  modalElement.classList.remove('modal--show');
+  document.body.classList.remove('hidden-overflow');
+};
 
 const createElementFunction = (element, className, content) => {
   const newElement = document.createElement(element);
@@ -57,6 +70,8 @@ const printData = data => {
   countriesGridElement.append(fragment);
 };
 
+const printModal = country => {};
+
 const fetchData = url => {
   const request = fetch(url);
   request
@@ -86,6 +101,15 @@ const filterByRegion = selectedRegion => {
 fetchData('https://restcountries.com/v3.1/all');
 
 // EVENTOS
+
+modalButton.addEventListener('click', closeModal);
+
+countriesGridElement.addEventListener('click', ev => {
+  console.log(ev.target);
+  if (ev.target.classList.contains('country')) {
+    openModal();
+  }
+});
 
 formElement.addEventListener('submit', ev => {
   ev.preventDefault();

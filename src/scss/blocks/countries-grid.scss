@@ -13,22 +13,30 @@
   border-radius: 1rem;
   overflow: hidden;
 
+  &__flag {
+    pointer-events: none;
+  }
+
   &__text {
     padding: 2rem 2rem 3rem;
+    pointer-events: none;
   }
 
   &__title {
     margin-top: 0;
     font-size: 1.2rem;
+    pointer-events: none;
   }
 
   &__key {
     margin-top: 0;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    pointer-events: none;
   }
 
   &__value {
     font-weight: 400;
+    pointer-events: none;
   }
 }
